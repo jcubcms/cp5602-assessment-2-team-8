@@ -45,6 +45,7 @@ if ( ! function_exists( 'u3a_townsville_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'u3a-townsville' ),
+                        'menu-2' => esc_html__( 'secondary', 'u3a-townsville' ),
 		) );
 
 		/*
