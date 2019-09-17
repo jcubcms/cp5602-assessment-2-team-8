@@ -10,6 +10,14 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    
+    <?php
+        if ( has_post_thumbnail() ) { ?>
+        <figure class="featured-image index-image">
+	<?php u3a_townsville_post_thumbnail(); ?>
+        </figure>
+        <?php } ?>
+    <div class="post__content">
 	<header class="entry-header">
             <?php u3a_townsville_category_list(); ?>
 		<?php
@@ -33,6 +41,15 @@
 	<?php u3a_townsville_post_thumbnail(); ?>
 
 	<div class="entry-content">
+            <?php
+            $length_setting = get_theme_mod('length_setting');
+            if ( 'excerpt' === $length_setting ) {
+                the_excerpt();
+                
+            } else {
+                the_content();
+            }
+            ?>
 		<?php
 		the_content( sprintf(
 			wp_kses(
@@ -54,7 +71,6 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php u3a_townsville_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+        
+    </div><!-- .post__content -->
 </article><!-- #post-<?php the_ID(); ?> -->

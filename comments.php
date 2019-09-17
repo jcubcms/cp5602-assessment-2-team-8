@@ -38,7 +38,7 @@ if ( post_password_required() ) {
 			} else {
 				printf( // WPCS: XSS OK.
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $u3a_townsville_comment_count, 'comments title', 'u3a-townsville' ) ),
+					esc_html( _nx( 'one comment', '%1$s comments;', $u3a_townsville_comment_count, 'comments title', 'u3a-townsville' ) ),
 					number_format_i18n( $u3a_townsville_comment_count ),
 					'<span>' . get_the_title() . '</span>'
 				);

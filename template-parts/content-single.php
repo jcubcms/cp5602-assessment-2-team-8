@@ -29,8 +29,13 @@
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-
-	<?php u3a_townsville_post_thumbnail(); ?>
+        
+        <?php
+        if ( has_post_thumbnail() ) { ?>
+        <figure class="featured-image full-bleed">
+	<?php u3a_townsville_post_thumbnail('u3a_townsville-full.bleed'); ?>
+        </figure>
+        <?php } ?>
         <section class="post-content">
             <?php
             if ( !is_active_sidebar( 'sidebar-1' ) ) :

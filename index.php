@@ -42,7 +42,11 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_pagination( array(
+                            'prev_text' => __( 'newer', 'u3a_townsville'),
+                            'next_text' => __( 'older', 'u3a_townsville'),
+                            'before_page_number' => '<span class="screen-reader-text">' .__( 'page ', 'u3a_townsville' ) . '</span>',
+                        ));
 
 		else :
 

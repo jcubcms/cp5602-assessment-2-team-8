@@ -9,11 +9,7 @@
 
 get_header();
 ?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
-		<?php if ( have_posts() ) : ?>
+    <?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
 				<?php
@@ -21,6 +17,14 @@ get_header();
 				the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
+                        
+                <?php endif; ?>
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		<?php if ( have_posts() ) : ?>
+
 
 			<?php
 			/* Start the Loop */
@@ -36,7 +40,11 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_pagination( array(
+                            'prev_text' => __( 'newer', 'u3a_townsville'),
+                            'next_text' => __( 'older', 'u3a_townsville'),
+                            'before_page_number' => '<span class="screen-reader-text">' .__( 'page ', 'u3a_townsville' ) . '</span>',
+                        ));
 
 		else :
 
