@@ -19,7 +19,7 @@
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
-		if ( 'post' === get_post_type() ) :
+		if ( is_active_sidebar( 'sidebar-1' ) ) :
 			?>
 			<div class="entry-meta">
 				<?php
@@ -31,8 +31,20 @@
 	</header><!-- .entry-header -->
 
 	<?php u3a_townsville_post_thumbnail(); ?>
-
-	<div class="entry-content">
+        <section class="post-content">
+            <?php
+            if ( !is_active_sidebar( 'sidebar-1' ) ) :
+			?>
+            <div class="post-content__wrap">
+			<div class="entry-meta">
+				<?php
+				u3a_townsville_posted_on();
+				u3a_townsville_posted_by();
+				?>
+			</div><!-- .entry-meta -->
+                        <div class="post-content__body">
+		<?php endif; ?>
+            <div class="entry-content">
 		<?php
 		the_content( sprintf(
 			wp_kses(
@@ -57,4 +69,24 @@
 	<footer class="entry-footer">
 		<?php u3a_townsville_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+        
+        <?php
+        if ( !is_active_sidebar( 'sidebar-1' ) ) : ?>
+                        </div><!-- .post-content__body -->
+                        </div><!-- .post-content__wrap -->
+                        <?php endif; ?>
+        
+        <?php
+        
+        u3a_townsville_post_navigation();
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+        ?>
+        </section>
+        
+        <?php
+        get_sidebar();
+        ?>
 </article><!-- #post-<?php the_ID(); ?> -->

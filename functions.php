@@ -45,7 +45,7 @@ if ( ! function_exists( 'u3a_townsville_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'u3a-townsville' ),
-                        'menu-2' => esc_html__( 'secondary', 'u3a-townsville' ),
+                        'social' => esc_html__( 'Social Media Menu', 'u3a-townsville' ),
 		) );
 
 		/*
@@ -186,7 +186,11 @@ function u3a_townsville_scripts() {
         wp_enqueue_style('u3a-townsville-fonts', u3a_townsville_fonts_url());
 	wp_enqueue_style( 'u3a-townsville-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'u3a-townsville-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'u3a_townsville-navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery'), '20151215', true );
+        wp_localize_script( 'u3a_townsville-navigation', 'u3a_townsvilleScreenReaderText', array( 'expand' => __( 'Expand child menu', 'u3a_townsville'), 'Collapse' => __( 'Collapse child menu', 'u3a_townsville'),
+            ));
+        
+        wp_enqueue_script( 'u3a_townsville-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), '20190915', true );
 
 	wp_enqueue_script( 'u3a-townsville-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
